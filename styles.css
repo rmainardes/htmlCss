@@ -1,0 +1,158 @@
+/* Importando fontes do Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&family=Roboto:wght@400;500&display=swap');
+
+/* Paleta de cores */
+:root {
+  --cor-primaria: #3f51b5;
+  --cor-secundaria: #5c6bc0;
+  --cor-fundo: #ffffff;
+  --cor-texto: #333;
+  --cor-destaque: #F2F1F1;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: var(--cor-fundo);
+  color: var(--cor-texto);
+  line-height: 1.6;
+  padding: 20px;
+}
+
+header, main, footer {
+  max-width: 800px;
+  margin: auto;
+}
+
+#profile {
+  text-align: center;
+  padding: 20px 0;
+}
+
+#profile img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 4px solid var(--cor-primaria);
+  object-fit: cover;
+}
+
+#profile h1 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 2rem;
+  color: var(--cor-primaria);
+  margin-top: 15px;
+}
+
+.bio {
+  font-size: 1rem;
+  color: #555;
+  margin-top: 10px;
+}
+
+section {
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  color: var(--cor-primaria);
+}
+
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+ul li {
+  background: var(--cor-destaque);
+  padding: 10px;
+  margin-bottom: 10px;
+  border-left: 5px solid var(--cor-secundaria);
+  border-radius: 4px;
+}
+
+#redes-sociais ul li a {
+  color: var(--cor-primaria);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+#redes-sociais ul li a:hover {
+  text-decoration: underline;
+}
+
+form {
+  background-color: var(--cor-destaque);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+  width: 100%;
+  padding: 5px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-family: 'Roboto', sans-serif;
+}
+
+button {
+  background-color: var(--cor-primaria);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-weight: 500;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: var(--cor-secundaria);
+}
+
+footer {
+  text-align: center;
+  font-size: 0.9rem;
+  color: #777;
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid #ccc;
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+  body {
+    padding: 10px;
+  }
+
+  #profile img {
+    width: 120px;
+    height: 120px;
+  }
+
+  #profile h1 {
+    font-size: 1.5rem;
+  }
+
+  h2 {
+    font-size: 1.3rem;
+  }
+}
