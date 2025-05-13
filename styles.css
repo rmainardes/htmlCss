@@ -11,8 +11,8 @@
 }
 
 .imagem {
-    float: right;
-    align-self: center;
+    float: right !important;
+    align-self: center !important;
 }
 
 * {
