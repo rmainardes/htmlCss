@@ -1,17 +1,21 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <link rel="stylesheet" href="styles.css">
   <meta charset="UTF-8">
   <title>Programador, ciclista, escotista, enxadrista e bem-humorado - conheça-me!</title>
 </head>
+
 <body>
+  <button id="toggle-theme">Alternar para tema escuro</button>
+
   <header>
     <section id="profile">
       <img src="images/my_photo.jpg" alt="Foto de perfil" width="150" height="200">
       <h1>Rodrigo Mainardes Ribeiro</h1>
       <p class="bio">Sou Rodrigo Mainardes Ribeiro, casado, pai de um menino de 9 anos,
-         formado em Letras - Inglês. Sou apaixonado por atividade física, lógica e relações humanas.</p>
+        formado em Letras - Inglês. Sou apaixonado por atividade física, lógica e relações humanas.</p>
     </section>
   </header>
 
@@ -19,32 +23,40 @@
     <section id="interesses">
       <h2>Meus Hobbies e Interesses</h2>
       <ul>
-        <li>Escotismo <img id="scoutimg" class="imagem" src="images/scouting.png" alt="Foto de perfil" width="50" height="50"></li>
-        <li>Xadrez <img class="imagem" src="images/chessing.jpg" alt="Foto de perfil" width="50" height="50"></li>
-        <li>Programação <img class="imagem" src="images/programming.png" alt="Foto de perfil" width="50" height="50"></li>
-        <li>Música (pop, rock, mpb e outros estilos) <img class="imagem" src="images/musicing.png" alt="Foto de perfil" width="50" height="50"></li>        
+        <li>Escotismo <img id="scoutimg" class="imagem" src="images/scouting.png" alt="Foto de perfil" width="50"
+            height="50"></li>
+        <li>Xadrez <img class="imagem" src="images/chessing.png" alt="Foto de perfil" width="50" height="50"></li>
+        <li>Programação <img class="imagem" src="images/programming.png" alt="Foto de perfil" width="50" height="50">
+        </li>
+        <li>Música (pop, rock, mpb e outros estilos) <img class="imagem" src="images/musicing.png" alt="Foto de perfil"
+            width="50" height="50"></li>
       </ul>
     </section>
 
     <section id="redes-sociais">
       <h2>Minhas Redes Sociais</h2>
       <ul>
-        <li><a href="https://www.linkedin.com/in/rodrigo-mainardes-1232972ba/" target="_blank">LinkedIn</a> <img class="imagem" src="images/linkedin.png" alt="Foto de perfil" width="50" height="50"></li>      
-        <li><a href="https://instagram.com/romainardes" target="_blank">Instagram</a> <img class="imagem" src="images/instagram.png" alt="Foto de perfil" width="50" height="50"></li>        
+        <li><a href="https://www.linkedin.com/in/rodrigo-mainardes-1232972ba/" target="_blank">LinkedIn</a> <img
+            class="imagem" src="images/linkedin.png" alt="Foto de perfil" width="50" height="50"></li>
+        <li><a href="https://instagram.com/romainardes" target="_blank">Instagram</a> <img class="imagem"
+            src="images/instagram.png" alt="Foto de perfil" width="50" height="50"></li>
       </ul>
     </section>
 
     <section id="contato">
       <h2>Entre em contato e deixe seu alô</h2>
-      <form action="#" method="post">
+      <form id="meuFormulario">
         <label for="nome">Nome:</label>
-        <input type="text" id="nome" name="nome" required><br>
+        <input type="text" id="nome" name="nome" required>
+        <span class="erro" id="erroNome"></span><br>
 
         <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required><br>
+        <input type="email" id="email" name="email" required>
+        <span class="erro" id="erroEmail"></span><br>
 
         <label for="mensagem">Mensagem:</label>
-        <textarea id="mensagem" name="mensagem" rows="5" required></textarea><br>
+        <textarea id="mensagem" name="mensagem" rows="5" required></textarea>
+        <span class="erro" id="erroMensagem"></span><br>
 
         <button type="submit">Enviar</button>
       </form>
@@ -54,5 +66,75 @@
   <footer>
     <p>&copy; 2025 Rodrigo Mainardes. Todos os direitos reservados.</p>
   </footer>
+
+  <script>
+    //Mensagem de boas-vindas
+    let nomeUsuario = prompt("Qual é o seu nome?");
+    if (nomeUsuario) {
+      alert("Bem-vindo(a) ao nosso site, " + nomeUsuario + "!");
+    } else {
+      alert("Bem-vindo(a) ao nosso site!");
+    }
+
+    //Validações de campo
+    function validarCampo(idCampo, idErro, regex = null) {
+      let campo = document.getElementById(idCampo);
+      let erro = document.getElementById(idErro);
+      let valor = campo.value.trim();
+
+      if (!valor) {
+        erro.textContent = "Este campo é obrigatório.";
+        campo.classList.add("campo-invalido");
+      } else if (regex && !regex.test(valor)) {
+        erro.textContent = "Formato inválido.";
+        campo.classList.add("campo-invalido");
+      } else {
+        erro.textContent = "";
+        campo.classList.remove("campo-invalido");
+      }
+    }
+
+    document.getElementById("nome").addEventListener("input", function () {
+      validarCampo("nome", "erroNome");
+    });
+
+    document.getElementById("email").addEventListener("input", function () {
+      validarCampo("email", "erroEmail", /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/);
+    });
+
+    document.getElementById("mensagem").addEventListener("input", function () {
+      validarCampo("mensagem", "erroMensagem");
+    });
+
+    //Alternância de tema
+    document.getElementById("toggle-theme").addEventListener("click", function () {
+      let body = document.body;
+      body.classList.toggle("dark-theme");
+
+      if (body.classList.contains("dark-theme")) {
+        this.textContent = "Alternar para tema claro";
+      } else {
+        this.textContent = "Alternar para tema escuro";
+      }
+    });
+
+    // Simula o envio do formulário
+    document.getElementById("meuFormulario").addEventListener("submit", function (event) {
+      event.preventDefault(); // Impede o envio real do formulário
+
+      // Pega os valores preenchidos
+      let nome = document.getElementById("nome").value;
+      let email = document.getElementById("email").value;
+      let mensagem = document.getElementById("mensagem").value;
+
+      // Mostrar os dados no alert
+      alert("Dados do formulário:\n" +
+        "Nome: " + nome + "\n" +
+        "Email: " + email + "\n" +
+        "Mensagem: " + mensagem);
+    });
+
+  </script>
 </body>
+
 </html>
